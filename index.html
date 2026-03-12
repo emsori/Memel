@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HBD Melda ❤️</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+	<style>
+
+		body,html{
+			margin:0;
+			padding:0;
+			width:100%;
+			height:100%;
+			overflow:hidden;
+			background:#000;
+		}
+
+/* MATRIX */
+
+#matrixCanvas{
+	position:absolute;
+	z-index:1;
+}
+
+/* STARFIELD */
+
+#starfield{
+	position:absolute;
+	width:100%;
+	height:100%;
+	z-index:0;
+	opacity:0;
+	transition:opacity 2s;
+}
+
+.star{
+	position:absolute;
+	background:white;
+	border-radius:50%;
+	animation:twinkle var(--d) infinite;
+}
+
+@keyframes twinkle{
+	0%,100%{opacity:0.3}
+	50%{opacity:1}
+}
+
+/* HEADER */
+
+#elegant-header{
+	position:absolute;
+	top:8%;
+	left:50%;
+	transform:translateX(-50%);
+	z-index:50;
+	opacity:0;
+}
+
+.header-box{
+	display:inline-block;
+	background:rgba(255,255,255,0.1);
+	backdrop-filter:blur(10px);
+	padding:12px 30px;
+	border-radius:15px;
+	border:1px solid rgba(255,255,255,0.2);
+}
+
+#header-text{
+	font-family:'Playfair Display',serif;
+	font-style:italic;
+	color:#fff;
+	font-size:1.6rem;
+	margin:0;
+	text-align:center;
+}
+
+/* INTRO */
+
+#intro-layer{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	z-index:100;
+}
+
+#countdown{
+	font-size:8rem;
+	color:#ff2d55;
+	font-family:'Arial Black';
+	text-shadow:0 0 20px #ff2d55;
+}
+
+#message{
+	font-size:3.5rem;
+	display:none;
+	color:#ff2d55;
+	font-family:'Arial Black';
+	text-align:center;
+}
+
+/* BOOK */
+
+#book-container{
+	display:none;
+	position:absolute;
+	top:55%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width:500px;
+	height:350px;
+	perspective:2000px;
+	z-index:40;
+}
+
+.book{
+	position:relative;
+	width:500px;
+	height:100%;
+	transform-style:preserve-3d;
+}
+
+/* PAGE */
+
+.page{
+	position:absolute;
+	width:250px;
+	height:100%;
+	top:0;
+	left:50%;
+	transform-origin:left;
+	transform-style:preserve-3d;
+	transition:transform 1.2s cubic-bezier(.645,.045,.355,1);
+	cursor:pointer;
+	box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.front,.back{
+	position:absolute;
+	width:100%;
+	height:100%;
+	backface-visibility:hidden;
+	border:4px solid #fff;
+	box-sizing:border-box;
+	background-size:cover;
+	background-position:center;
+}
+
+.front{
+	border-radius:0 10px 10px 0;
+}
+
+.back{
+	transform:rotateY(180deg);
+	border-radius:10px 0 0 10px;
+	background:#fff;
+}
+
+.page.flipped{
+	transform:rotateY(-180deg);
+}
+
+/* COVER */
+
+.cover-front{
+	background:#fff;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+
+.hands-container{
+	position:relative;
+	width:100%;
+	height:180px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.hand-img{
+	width:42%;
+}
+
+.hand-right{
+	transform:scaleX(-1);
+}
+
+.cover-heart{
+	position:absolute;
+	top:40%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	font-size:45px;
+}
+
+.cover-front p{
+	font-family:sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	color:#333;
+	margin-top:20px;
+}
+
+/* GIF */
+
+#cat-gif{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%) scale(0);
+	width:150px;
+	z-index:60;
+	opacity:0;
+}
+
+/* HEART */
+
+.heart-fly{
+	position:absolute;
+	bottom:-50px;
+	color:#ff2d55;
+	font-size:20px;
+	pointer-events:none;
+}
+
+</style>
+</head>
+
+<body>
+
+	<div id="starfield"></div>
+	<canvas id="matrixCanvas"></canvas>
+
+	<div id="elegant-header">
+		<div class="header-box">
+			<h1 id="header-text">Happy Birthday Melda ❤️</h1>
+		</div>
+	</div>
+
+	<div id="intro-layer">
+		<div id="countdown">3</div>
+		<div id="message"></div>
+	</div>
+
+	<img id="cat-gif" src="https://media.tenor.com/DhqhjsSjIsEAAAAi/sanrio.gif">
+
+	<div id="book-container">
+		<div class="book">
+
+<!-- COVER DEPAN -->
+
+<div class="page" data-text="Buka Bukunya Sayang ❤️" style="z-index:10">
+
+	<div class="front cover-front">
+
+		<div class="hands-container">
+			<img src="imgmel/tangan.jpeg" class="hand-img">
+			<div class="cover-heart">❤️</div>
+			<img src="imgmel/tangan.jpeg" class="hand-img hand-right">
+		</div>
+
+		<p>TAP UNTUK BUKA ❤️</p>
+
+	</div>
+
+	<div class="back" style="background-image:url('imgmel/foto1.jpeg')"></div>
+
+</div>
+
+
+<!-- PAGE 2 -->
+
+<div class="page" data-text="Selamanya Bareng Ya Melda ✨" style="z-index:5">
+
+	<div class="front" style="background-image:url('imgmel/foto5.jpeg')"></div>
+	<div class="back" style="background-image:url('imgmel/foto6.jpeg')"></div>
+
+</div>
+
+
+<!-- PAGE 3 -->
+
+<div class="page" data-text="You're My Everything ❤️" style="z-index:4">
+
+	<div class="front" style="background-image:url('imgmel/foto3.jpeg')"></div>
+	<div class="back" style="background-image:url('imgmel/foto4.jpeg')"></div>
+
+</div>
+
+
+<!-- COVER BELAKANG -->
+
+<div class="page" data-text="Love You Always ❤️" style="z-index:1">
+
+	<div class="front cover-front">
+
+		<div class="hands-container">
+			<img src="imgmel/tangan.jpeg" class="hand-img">
+			<div class="cover-heart">❤️</div>
+			<img src="imgmel/tangan.jpeg" class="hand-img hand-right">
+		</div>
+
+		<p>THE END ❤️</p>
+
+	</div>
+
+	<div class="back" style="background:#000"></div>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+/* MATRIX */
+
+	const canvas=document.getElementById('matrixCanvas');
+	const ctx=canvas.getContext('2d');
+
+	canvas.width=window.innerWidth;
+	canvas.height=window.innerHeight;
+
+	const fontSize=10;
+	const columns=Math.floor(canvas.width/fontSize);
+	const rainDrops=Array.from({length:columns}).fill(-1);
+
+	function drawMatrix(){
+
+		ctx.fillStyle='rgba(0,0,0,0.15)';
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+
+		ctx.fillStyle='#ff2d55';
+		ctx.font=fontSize+'px monospace';
+
+		for(let i=0;i<rainDrops.length;i++){
+
+			if(rainDrops[i]>=0){
+				ctx.fillText(Math.floor(Math.random()*2),i*fontSize,rainDrops[i]*fontSize);
+			}
+
+			if(rainDrops[i]*fontSize>canvas.height && Math.random()>0.8){
+				rainDrops[i]=0;
+			}
+
+			else if(rainDrops[i]==-1 && Math.random()>0.95){
+				rainDrops[i]=0;
+			}
+
+			if(rainDrops[i]!=-1){
+				rainDrops[i]++;
+			}
+
+		}
+
+	}
+
+	let matrixInterval=setInterval(drawMatrix,30);
+
+
+/* COUNTDOWN */
+
+	let timeLeft=3;
+
+	const timer=setInterval(()=>{
+
+		timeLeft--;
+
+		if(timeLeft>0){
+
+			document.getElementById("countdown").innerHTML=timeLeft;
+
+		}else{
+
+			clearInterval(timer);
+
+			document.getElementById("countdown").innerHTML="❤️";
+
+			gsap.to("#countdown",{scale:15,opacity:0,duration:1,onComplete:startCelebration});
+
+		}
+
+	},1200);
+
+
+
+	function startCelebration(){
+
+		const msg=document.getElementById("message");
+
+		msg.style.display="block";
+
+		const texts=["HAPPY","BIRTHDAY","TO","MY LOVELY","MELDA"];
+
+		let i=0;
+
+		const t=setInterval(()=>{
+
+			gsap.fromTo(msg,{opacity:0,y:10},{opacity:1,y:0,duration:0.8});
+
+			msg.innerHTML=texts[i];
+
+			i++;
+
+			if(i>=texts.length){
+
+				clearInterval(t);
+
+				setTimeout(showGifStage,1500);
+
+			}
+
+		},1800);
+
+	}
+
+
+
+	function showGifStage(){
+
+		canvas.style.opacity="0";
+		clearInterval(matrixInterval);
+
+		document.getElementById("intro-layer").remove();
+
+		document.getElementById("starfield").style.opacity="1";
+
+		gsap.to("#cat-gif",{opacity:1,scale:1,duration:1,onComplete:()=>{
+
+			setTimeout(()=>{
+
+				gsap.to("#cat-gif",{opacity:0,scale:0.5,duration:0.8,onComplete:showBook})
+
+			},2000)
+
+		}})
+
+	}
+
+
+
+	function showBook(){
+
+		document.getElementById("cat-gif").style.display="none";
+
+		document.getElementById("elegant-header").style.opacity="1";
+
+		const container=document.getElementById("book-container");
+
+		container.style.display="block";
+
+		const pages=document.querySelectorAll('.page');
+
+		const hText=document.getElementById("header-text");
+
+		pages.forEach((page,index)=>{
+
+			page.onclick=function(e){
+
+				e.stopPropagation();
+
+				const isFlipped=this.classList.toggle('flipped');
+
+				hText.style.opacity="0";
+
+				setTimeout(()=>{
+
+					let topPage=[...pages].reverse().find(p=>!p.classList.contains('flipped'));
+
+					if(topPage){
+
+						hText.innerText=topPage.getAttribute('data-text');
+
+						hText.style.opacity="1";
+
+					}
+
+				},600);
+
+
+/* FIX ZINDEX */
+
+				if(isFlipped){
+
+					setTimeout(()=>{
+
+						this.style.zIndex=index;
+
+					},600);
+
+				}else{
+
+					setTimeout(()=>{
+
+						this.style.zIndex=pages.length-index;
+
+					},600);
+
+				}
+
+			};
+
+		});
+
+		setInterval(createHeart,600);
+
+	}
+
+
+
+	function createHeart(){
+
+		const heart=document.createElement('div');
+
+		heart.className='heart-fly';
+
+		heart.innerHTML='❤️';
+
+		heart.style.left=Math.random()*100+'vw';
+
+		document.body.appendChild(heart);
+
+		gsap.to(heart,{y:-window.innerHeight-100,opacity:0,duration:4,onComplete:()=>heart.remove()});
+
+	}
+
+
+
+/* STARFIELD */
+
+	const starfield=document.getElementById('starfield');
+
+	for(let i=0;i<150;i++){
+
+		const star=document.createElement('div');
+
+		star.className='star';
+
+		star.style.left=Math.random()*100+'%';
+
+		star.style.top=Math.random()*100+'%';
+
+		star.style.width=Math.random()*2+'px';
+
+		star.style.height=star.style.width;
+
+		star.style.setProperty('--d',(2+Math.random()*3)+'s');
+
+		starfield.appendChild(star);
+
+	}
+
+</script>
+
+</body>
+</html>
