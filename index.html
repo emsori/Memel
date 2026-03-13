@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <title>For Melda ❤️</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -102,7 +105,7 @@ button{
     }
 }
 
-/* CONFIRM TEXT */
+/* ===== CONFIRM TEXT ===== */
 
 .confirm-text{
     opacity:0;
@@ -182,7 +185,7 @@ button{
     opacity:0;
 }
 
-/* PLAYER */
+/* ===== PLAYER ===== */
 
 .music-player{
     position:relative;
@@ -304,41 +307,64 @@ button{
     transform:rotateY(180deg);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== MOBILE FIX ===== */
 
-@media (orientation:portrait){
+@media (max-width:768px){
 
     .main-container{
         flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:25px 20px;
         gap:25px;
     }
 
     .love-box{
-        width:90%;
-        padding:18px;
+        width:95%;
+        padding:20px;
         border-radius:14px;
     }
 
     .love-title{
-        font-size:28px;
+        font-size:26px;
+        text-align:center;
     }
 
     .love-text p{
         font-size:14px;
+        line-height:1.6;
+        text-align:center;
     }
 
     .music-player{
-        width:260px;
+        width:240px;
+        height:200px;
     }
 
     .cover{
-        width:170px;
+        width:150px;
     }
 
     .vinyl{
-        width:160px;
-        height:160px;
-        right:90px;
+        width:150px;
+        height:150px;
+        right:80px;
+    }
+
+    .gallery{
+        flex-direction:column;
+        gap:30px;
+        padding:30px 20px;
+    }
+
+    .photo-grid{
+        grid-template-columns:repeat(2,130px);
+        gap:15px;
+    }
+
+    .flip-card{
+        width:130px;
+        height:130px;
     }
 
 }
@@ -497,7 +523,7 @@ button{
 
     }
 
-/* ===== ANIMATION PAGE 3 ===== */
+/* ===== PAGE 3 ANIMATION ===== */
 
     function animatePage3(){
 
