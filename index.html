@@ -1,229 +1,212 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Melda ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Melda ❤️</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-    <style>
+<style>
 
-        body,html{
-            margin:0;
-            padding:0;
-            width:100%;
-            height:100%;
-            font-family:'Poppins',sans-serif;
-            overflow:hidden;
-        }
-
-/* LOGIN */
-#login-stage,#confirm-stage{
-    position:fixed;
-    inset:0;
-    background:black;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    z-index:100;
-    color:white;
-}
-
-#confirm-stage{display:none;}
-
-.card{
-    text-align:center;
-    width:260px;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:10px;
-    border-radius:8px;
-    border:none;
-    text-align:center;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    background:#ff2d55;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
+body,html{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+font-family:'Poppins',sans-serif;
+overflow:hidden;
+background:white;
 }
 
 /* MAIN */
-#main-stage{
-    display:none;
-    position:absolute;
-    inset:0;
-    background:white;
-}
-
-/* LAYOUT */
 .main-container{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:100%;
-    padding:40px;
-    box-sizing:border-box;
+display:flex;
+align-items:center;
+justify-content:space-between;
+height:100vh;
+padding:3vw;
+box-sizing:border-box;
 }
 
 /* BOX ROMANTIS */
+
 .love-box{
-    width:45%;
-    background:#ffb6c1;
-    padding:35px;
-    border-radius:20px;
-    position:relative;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+width:45%;
+background:#ffb6c1;
+padding:2.5vw;
+border-radius:1.5vw;
+position:relative;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+overflow:auto;
+max-height:85vh;
 }
 
 .emoji{
-    position:absolute;
-    top:10px;
-    right:20px;
-    font-size:28px;
+position:absolute;
+top:10px;
+right:15px;
+font-size:26px;
 }
 
 .love-title{
-    font-family:'Great Vibes',cursive;
-    font-size:44px;
-    color:#d10050;
-    margin-bottom:20px;
+font-family:'Great Vibes',cursive;
+font-size:3vw;
+color:#d10050;
+margin-bottom:15px;
 }
 
 .love-text{
-    font-size:17px;
-    line-height:1.7;
-    color:#5a0030;
+font-size:1.1vw;
+line-height:1.7;
+color:#5a0030;
 }
 
 /* PLAYER */
+
 .music-player{
-    position:relative;
-    width:360px;
-    height:220px;
+position:relative;
+width:30vw;
+height:30vw;
 }
 
 /* COVER */
+
 .cover{
-    position:absolute;
-    width:220px;
-    right:0;
-    z-index:3;
-    border-radius:6px;
-    box-shadow:0 12px 35px rgba(0,0,0,0.35);
+position:absolute;
+width:18vw;
+right:0;
+z-index:3;
+border-radius:0.7vw;
+box-shadow:0 12px 35px rgba(0,0,0,0.35);
 }
 
 /* VINYL */
+
 .vinyl{
-    position:absolute;
-    width:210px;
-    height:210px;
-    right:140px;
-    top:5px;
-    border-radius:50%;
-    z-index:1;
+position:absolute;
+width:20vw;
+height:20vw;
+right:10vw;
+top:1vw;
+border-radius:50%;
+z-index:1;
 
-    background:
-    radial-gradient(circle at center,
-        #000 60px,
-        #111 70px,
-        #000 100px,
-        #111 120px,
-        #000 150px);
+background:
+radial-gradient(circle at center,
+#000 4vw,
+#111 5vw,
+#000 7vw,
+#111 9vw,
+#000 10vw);
 
-    box-shadow:
-    inset 0 0 12px rgba(255,255,255,0.1),
-    0 0 25px rgba(0,0,0,0.4);
+box-shadow:
+inset 0 0 12px rgba(255,255,255,0.1),
+0 0 25px rgba(0,0,0,0.4);
 
-    animation:spin 4s linear infinite;
-    animation-play-state:paused;
+animation:spin 4s linear infinite;
+animation-play-state:running;
 }
 
 .vinyl-label{
-    position:absolute;
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    object-fit:cover;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 8px rgba(0,0,0,0.4);
+position:absolute;
+width:6vw;
+height:6vw;
+border-radius:50%;
+object-fit:cover;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 }
 
 @keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
 }
 
-/* HEART */
-.heart{
-    position:absolute;
-    bottom:-50px;
-    font-size:22px;
-    color:#ff2d55;
+/* MOBILE PORTRAIT */
+
+@media (max-width:768px) and (orientation:portrait){
+
+.main-container{
+flex-direction:column;
+justify-content:flex-start;
+gap:20px;
+padding:20px;
 }
 
-/* MOBILE */
-@media (max-width:768px){
+.love-box{
+width:100%;
+max-height:50vh;
+}
 
-    body,html{
-        overflow:hidden;
-    }
+.love-title{
+font-size:30px;
+}
 
-    .main-container{
-        flex-direction:column;
-        justify-content:flex-start;
-        gap:20px;
-        padding:15px;
-    }
+.love-text{
+font-size:16px;
+}
 
-    .love-box{
-        width:100%;
-        height:55vh;
-        overflow:auto;
-        padding:25px;
-    }
+.music-player{
+width:260px;
+height:200px;
+}
 
-    .love-title{
-        font-size:34px;
-    }
+.vinyl{
+width:150px;
+height:150px;
+right:90px;
+}
 
-    .love-text{
-        font-size:16px;
-    }
+.cover{
+width:170px;
+}
 
-    .music-player{
-        width:260px;
-        height:180px;
-    }
+.vinyl-label{
+width:50px;
+height:50px;
+}
 
-    .vinyl{
-        width:150px;
-        height:150px;
-        right:95px;
-    }
+}
 
-    .cover{
-        width:170px;
-    }
+/* MOBILE LANDSCAPE */
 
-    .vinyl-label{
-        width:50px;
-        height:50px;
-    }
+@media (max-width:900px) and (orientation:landscape){
+
+.main-container{
+flex-direction:row;   /* ini bikin tetap kesamping */
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.love-box{
+width:50%;
+max-height:80vh;
+}
+
+.music-player{
+width:40vw;
+height:40vw;
+}
+
+.vinyl{
+width:22vw;
+height:22vw;
+right:12vw;
+}
+
+.cover{
+width:20vw;
+}
+
+.vinyl-label{
+width:7vw;
+height:7vw;
+}
 
 }
 
@@ -232,146 +215,44 @@ button{
 
 <body>
 
-    <audio id="song" src="musicmel/lagu.mp3" loop></audio>
+<div class="main-container">
 
-<!-- LOGIN -->
-<div id="login-stage">
-    <div class="card">
-        <h2>Unlock Heart</h2>
-        <input type="password" id="passInput" placeholder="Password">
-        <button onclick="checkPass()">Buka</button>
-    </div>
+<div class="love-box">
+
+<div class="emoji">❤️</div>
+
+<div class="love-title">Untuk Melda</div>
+
+<div class="love-text">
+Di antara banyaknya hari yang pernah aku jalani,  
+hari ini terasa berbeda karena ada kamu di dalamnya.  
+
+Kamu adalah alasan mengapa senyum bisa muncul  
+tanpa alasan yang jelas.  
+
+Terima kasih sudah hadir di hidupku,  
+terima kasih sudah menjadi seseorang  
+yang membuat dunia terasa lebih hangat.  
+
+Aku mungkin tidak selalu sempurna,  
+tapi satu hal yang pasti...  
+
+<strong>aku selalu bersyukur karena ada kamu.</strong> ❤️
 </div>
-
-<!-- CONFIRM -->
-<div id="confirm-stage">
-    <div class="card">
-        <p>Sudah siap melihat kejutan?</p>
-        <button onclick="start()">SIAP!</button>
-    </div>
-</div>
-
-<!-- MAIN -->
-<div id="main-stage">
-
-    <div class="main-container">
-
-        <div class="love-box">
-
-            <div class="emoji">❤️</div>
-
-            <div class="love-title">Untuk Melda</div>
-
-            <div class="love-text">
-                Di antara banyaknya hari yang pernah aku jalani,  
-                hari ini terasa berbeda karena ada kamu di dalamnya.  
-
-                Kamu adalah alasan mengapa senyum bisa muncul  
-                tanpa alasan yang jelas.  
-
-                Terima kasih sudah hadir di hidupku,  
-                terima kasih sudah menjadi seseorang  
-                yang membuat dunia terasa lebih hangat.  
-
-                Aku mungkin tidak selalu sempurna,  
-                tapi satu hal yang pasti...  
-
-                <strong>aku selalu bersyukur karena ada kamu.</strong> ❤️
-            </div>
-
-        </div>
-
-        <div class="music-player">
-
-            <div class="vinyl" id="vinyl">
-                <img src="imgmel/cover.jpeg" class="vinyl-label">
-            </div>
-
-            <img src="imgmel/cover.jpeg" class="cover">
-
-        </div>
-
-    </div>
 
 </div>
 
-<script>
+<div class="music-player">
 
-    const song=document.getElementById("song")
-    const vinyl=document.getElementById("vinyl")
+<div class="vinyl">
+<img src="imgmel/cover.jpeg" class="vinyl-label">
+</div>
 
-    function checkPass(){
+<img src="imgmel/cover.jpeg" class="cover">
 
-        if(document.getElementById("passInput").value.toLowerCase()=="melda"){
+</div>
 
-            gsap.to("#login-stage",{opacity:0,duration:0.6,onComplete:()=>{
-
-                document.getElementById("login-stage").style.display="none"
-                document.getElementById("confirm-stage").style.display="flex"
-
-            }})
-
-        }
-
-    }
-
-    function start(){
-
-        gsap.to("#confirm-stage",{opacity:0,duration:0.8,onComplete:()=>{
-
-            document.getElementById("confirm-stage").remove()
-
-            showPlayer()
-
-        }})
-
-    }
-
-    function showPlayer(){
-
-        document.getElementById("main-stage").style.display="block"
-
-        gsap.from(".love-box",{x:-100,opacity:0,duration:1.5})
-
-        gsap.from(".cover",{x:200,opacity:0,duration:1.5})
-
-        gsap.from(".vinyl",{x:200,opacity:0,duration:1.5,delay:0.4,onComplete:()=>{
-
-            song.play()
-
-            vinyl.style.animationPlayState="running"
-
-            startHearts()
-
-        }})
-
-    }
-
-    function startHearts(){
-
-        setInterval(()=>{
-
-            let h=document.createElement("div")
-
-            h.className="heart"
-            h.innerHTML="❤️"
-
-            h.style.left=Math.random()*100+"vw"
-
-            document.body.appendChild(h)
-
-            gsap.to(h,{
-                y:-window.innerHeight-100,
-                opacity:0,
-                duration:4,
-                onComplete:()=>h.remove()
-            })
-
-        },700)
-
-    }
-
-</script>
+</div>
 
 </body>
 </html>
