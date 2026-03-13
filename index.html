@@ -17,6 +17,7 @@
             width:100%;
             height:100%;
             font-family:'Poppins',sans-serif;
+            overflow:hidden;
         }
 
 /* LOGIN */
@@ -32,9 +33,7 @@
     color:white;
 }
 
-#confirm-stage{
-    display:none;
-}
+#confirm-stage{display:none;}
 
 .card{
     text-align:center;
@@ -83,7 +82,7 @@ button{
 .love-box{
     width:45%;
     background:#ffb6c1;
-    padding:40px;
+    padding:35px;
     border-radius:20px;
     position:relative;
     box-shadow:0 10px 30px rgba(0,0,0,0.15);
@@ -98,13 +97,13 @@ button{
 
 .love-title{
     font-family:'Great Vibes',cursive;
-    font-size:48px;
+    font-size:44px;
     color:#d10050;
     margin-bottom:20px;
 }
 
 .love-text{
-    font-size:18px;
+    font-size:17px;
     line-height:1.7;
     color:#5a0030;
 }
@@ -112,26 +111,26 @@ button{
 /* PLAYER */
 .music-player{
     position:relative;
-    width:420px;
-    height:260px;
+    width:360px;
+    height:220px;
 }
 
-/* COVER BESAR */
+/* COVER */
 .cover{
     position:absolute;
-    width:260px;
+    width:220px;
     right:0;
     z-index:3;
     border-radius:6px;
-    box-shadow:0 12px 35px rgba(0,0,0,0.4);
+    box-shadow:0 12px 35px rgba(0,0,0,0.35);
 }
 
 /* VINYL */
 .vinyl{
     position:absolute;
-    width:240px;
-    height:240px;
-    right:160px;
+    width:210px;
+    height:210px;
+    right:140px;
     top:5px;
     border-radius:50%;
     z-index:1;
@@ -152,11 +151,10 @@ button{
     animation-play-state:paused;
 }
 
-/* COVER DI TENGAH VINYL */
 .vinyl-label{
     position:absolute;
-    width:80px;
-    height:80px;
+    width:70px;
+    height:70px;
     border-radius:50%;
     object-fit:cover;
     top:50%;
@@ -165,22 +163,9 @@ button{
     box-shadow:0 0 8px rgba(0,0,0,0.4);
 }
 
-/* ROTATE */
 @keyframes spin{
     from{transform:rotate(0deg);}
     to{transform:rotate(360deg);}
-}
-
-/* TEXT */
-#dramatic-text{
-    position:absolute;
-    bottom:40px;
-    width:100%;
-    text-align:center;
-    font-size:28px;
-    letter-spacing:2px;
-    opacity:0;
-    color:#ff2d55;
 }
 
 /* HEART */
@@ -191,37 +176,53 @@ button{
     color:#ff2d55;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width:768px){
+
+    body,html{
+        overflow:hidden;
+    }
 
     .main-container{
         flex-direction:column;
-        gap:40px;
-        padding:20px;
+        justify-content:flex-start;
+        gap:20px;
+        padding:15px;
     }
 
     .love-box{
-        width:90%;
+        width:100%;
+        height:55vh;
+        overflow:auto;
+        padding:25px;
+    }
+
+    .love-title{
+        font-size:34px;
+    }
+
+    .love-text{
+        font-size:16px;
     }
 
     .music-player{
-        width:300px;
-        height:200px;
+        width:260px;
+        height:180px;
     }
 
     .vinyl{
-        width:180px;
-        height:180px;
-        right:120px;
+        width:150px;
+        height:150px;
+        right:95px;
     }
 
     .cover{
-        width:200px;
+        width:170px;
     }
 
     .vinyl-label{
-        width:60px;
-        height:60px;
+        width:50px;
+        height:50px;
     }
 
 }
@@ -255,48 +256,42 @@ button{
 
     <div class="main-container">
 
-<!-- BOX ROMANTIS -->
-<div class="love-box">
+        <div class="love-box">
 
-    <div class="emoji">❤️</div>
+            <div class="emoji">❤️</div>
 
-    <div class="love-title">Untuk Melda</div>
+            <div class="love-title">Untuk Melda</div>
 
-    <div class="love-text">
-        Di antara banyaknya hari yang pernah aku jalani,  
-        hari ini terasa berbeda karena ada kamu di dalamnya.  
+            <div class="love-text">
+                Di antara banyaknya hari yang pernah aku jalani,  
+                hari ini terasa berbeda karena ada kamu di dalamnya.  
 
-        Kamu adalah alasan mengapa senyum bisa muncul  
-        tanpa alasan yang jelas.  
+                Kamu adalah alasan mengapa senyum bisa muncul  
+                tanpa alasan yang jelas.  
 
-        Terima kasih sudah hadir di hidupku,  
-        terima kasih sudah menjadi seseorang  
-        yang membuat dunia terasa lebih hangat.  
+                Terima kasih sudah hadir di hidupku,  
+                terima kasih sudah menjadi seseorang  
+                yang membuat dunia terasa lebih hangat.  
 
-        Aku mungkin tidak selalu sempurna,  
-        tapi satu hal yang pasti...  
+                Aku mungkin tidak selalu sempurna,  
+                tapi satu hal yang pasti...  
 
-        <strong>aku selalu bersyukur karena ada kamu.</strong> ❤️
+                <strong>aku selalu bersyukur karena ada kamu.</strong> ❤️
+            </div>
+
+        </div>
+
+        <div class="music-player">
+
+            <div class="vinyl" id="vinyl">
+                <img src="imgmel/cover.jpeg" class="vinyl-label">
+            </div>
+
+            <img src="imgmel/cover.jpeg" class="cover">
+
+        </div>
+
     </div>
-
-</div>
-
-<!-- PLAYER -->
-<div class="music-player">
-
-    <div class="vinyl" id="vinyl">
-
-        <img src="imgmel/cover.jpeg" class="vinyl-label">
-
-    </div>
-
-    <img src="imgmel/cover.jpeg" class="cover">
-
-</div>
-
-</div>
-
-<div id="dramatic-text">HBD MELDA ❤️</div>
 
 </div>
 
@@ -345,8 +340,6 @@ button{
             song.play()
 
             vinyl.style.animationPlayState="running"
-
-            gsap.to("#dramatic-text",{opacity:1,duration:2})
 
             startHearts()
 
