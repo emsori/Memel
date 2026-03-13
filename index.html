@@ -14,8 +14,9 @@
             padding:0;
             font-family:'Poppins',sans-serif;
             height:100%;
-            overflow:hidden;
+            overflow-x:hidden;
             background:white;
+            scroll-behavior:smooth;
         }
 
 /* ===== BACKGROUND BINTANG ===== */
@@ -114,11 +115,39 @@ button{
     animation-delay:.6s;
 }
 
+/* ===== PAGE TRANSITION ===== */
+
+.pageFadeOut{
+    animation:pageFadeOut 1s forwards;
+}
+
+.pageFadeIn{
+    animation:pageFadeIn 1s forwards;
+}
+
+@keyframes pageFadeOut{
+    to{
+        opacity:0;
+        transform:scale(.96);
+    }
+}
+
+@keyframes pageFadeIn{
+    from{
+        opacity:0;
+        transform:scale(1.03);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
 /* ===== PAGE 3 ===== */
 
 #page3{
     display:none;
-    height:100vh;
+    min-height:120vh;
     position:relative;
     z-index:1;
 }
@@ -127,7 +156,7 @@ button{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    height:100%;
+    min-height:100vh;
     padding:40px;
 }
 
@@ -275,17 +304,27 @@ button{
     transform:rotateY(180deg);
 }
 
-/* ===== MOBILE ===== */
+/* ===== RESPONSIVE ===== */
 
-@media(max-width:768px){
+@media (orientation:portrait){
 
-    .main-container,.gallery{
+    .main-container{
         flex-direction:column;
         gap:25px;
     }
 
     .love-box{
-        width:100%;
+        width:90%;
+        padding:18px;
+        border-radius:14px;
+    }
+
+    .love-title{
+        font-size:28px;
+    }
+
+    .love-text p{
+        font-size:14px;
     }
 
     .music-player{
@@ -314,6 +353,7 @@ button{
     <audio id="song" src="musicmel/lagu.mp3" loop></audio>
 
 <!-- LOGIN -->
+
 <div id="login">
     <h2>Unlock Heart</h2>
     <input type="password" id="pass">
@@ -321,12 +361,14 @@ button{
 </div>
 
 <!-- CONFIRM -->
+
 <div id="confirm">
     <h2 class="confirm-text">Siap lihat kejutan?</h2>
     <button class="confirm-btn" onclick="start()">SIAP</button>
 </div>
 
 <!-- PAGE 3 -->
+
 <div id="page3">
 
     <button id="skipBtn" onclick="showPage4()">SKIP</button>
@@ -449,13 +491,13 @@ button{
 
         setTimeout(()=>{
             showPage4()
-        },10000)
+        },25000)
 
         document.getElementById("skipBtn").style.display="block"
 
     }
 
-/* ===== DRAMATIC ANIMATION ===== */
+/* ===== ANIMATION PAGE 3 ===== */
 
     function animatePage3(){
 
@@ -493,14 +535,26 @@ button{
 
     function showPage4(){
 
-        document.getElementById("page3").style.display="none"
-        document.getElementById("page4").style.display="block"
+        const page3=document.getElementById("page3")
 
-        startFlip()
+        page3.classList.add("pageFadeOut")
+
+        setTimeout(()=>{
+
+            page3.style.display="none"
+
+            const page4=document.getElementById("page4")
+
+            page4.style.display="block"
+            page4.classList.add("pageFadeIn")
+
+            startFlip()
+
+        },900)
 
     }
 
-/* ===== FLIP SLIDESHOW ===== */
+/* ===== FLIP ===== */
 
     function startFlip(){
 
