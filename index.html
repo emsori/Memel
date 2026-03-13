@@ -1,212 +1,306 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Melda ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Melda ❤️</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
 
-<style>
+        body,html{
+            margin:0;
+            padding:0;
+            font-family:'Poppins',sans-serif;
+            height:100%;
+            overflow:hidden;
+            background:white;
+        }
 
-body,html{
-margin:0;
-padding:0;
-width:100%;
-height:100%;
-font-family:'Poppins',sans-serif;
-overflow:hidden;
-background:white;
+/* ===== BACKGROUND BINTANG ===== */
+
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
 }
 
-/* MAIN */
+.star{
+    position:absolute;
+    color:#ff7ab6;
+    font-size:14px;
+    opacity:.7;
+    animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;transform:scale(.8)}
+    to{opacity:.9;transform:scale(1.2)}
+}
+
+/* ===== LOGIN & CONFIRM ===== */
+
+#login,#confirm{
+    position:fixed;
+    inset:0;
+    background:black;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:10;
+}
+
+#confirm{display:none;}
+
+input{
+    padding:12px;
+    border-radius:8px;
+    border:none;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+button{
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    background:#ff2d55;
+    color:white;
+    cursor:pointer;
+}
+
+/* ===== ANIMASI ===== */
+
+.fadeOut{
+    animation:fadeOut .8s forwards;
+}
+
+@keyframes fadeOut{
+    to{
+        opacity:0;
+        transform:scale(.95);
+    }
+}
+
+.fadeIn{
+    animation:fadeIn 1s forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* CONFIRM TEXT */
+
+.confirm-text{
+    opacity:0;
+    animation:fadeIn 1s forwards;
+}
+
+.confirm-btn{
+    opacity:0;
+    animation:fadeIn 1s forwards;
+    animation-delay:.6s;
+}
+
+/* ===== PAGE 3 ===== */
+
+#page3{
+    display:none;
+    height:100vh;
+    position:relative;
+    z-index:1;
+}
+
 .main-container{
-display:flex;
-align-items:center;
-justify-content:space-between;
-height:100vh;
-padding:3vw;
-box-sizing:border-box;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:100%;
+    padding:40px;
 }
-
-/* BOX ROMANTIS */
 
 .love-box{
-width:45%;
-background:#ffb6c1;
-padding:2.5vw;
-border-radius:1.5vw;
-position:relative;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-overflow:auto;
-max-height:85vh;
-}
-
-.emoji{
-position:absolute;
-top:10px;
-right:15px;
-font-size:26px;
+    width:45%;
+    background:#ffd3e6;
+    padding:30px;
+    border-radius:20px;
+    opacity:0;
+    transform:translateY(30px);
 }
 
 .love-title{
-font-family:'Great Vibes',cursive;
-font-size:3vw;
-color:#d10050;
-margin-bottom:15px;
+    font-family:'Great Vibes';
+    font-size:42px;
+    color:#d10050;
+    margin-bottom:20px;
+    opacity:0;
 }
 
-.love-text{
-font-size:1.1vw;
-line-height:1.7;
-color:#5a0030;
+.love-text p{
+    margin:10px 0;
+    opacity:0;
 }
 
 /* PLAYER */
 
 .music-player{
-position:relative;
-width:30vw;
-height:30vw;
+    position:relative;
+    width:360px;
+    height:260px;
 }
-
-/* COVER */
 
 .cover{
-position:absolute;
-width:18vw;
-right:0;
-z-index:3;
-border-radius:0.7vw;
-box-shadow:0 12px 35px rgba(0,0,0,0.35);
+    width:210px;
+    position:absolute;
+    right:0;
+    border-radius:12px;
+    z-index:2;
 }
 
-/* VINYL */
-
 .vinyl{
-position:absolute;
-width:20vw;
-height:20vw;
-right:10vw;
-top:1vw;
-border-radius:50%;
-z-index:1;
+    position:absolute;
+    width:230px;
+    height:230px;
+    right:130px;
+    border-radius:50%;
 
-background:
-radial-gradient(circle at center,
-#000 4vw,
-#111 5vw,
-#000 7vw,
-#111 9vw,
-#000 10vw);
+    background:
+    radial-gradient(circle at center,
+        #000 60px,
+        #111 70px,
+        #000 100px,
+        #111 120px,
+        #000 150px);
 
-box-shadow:
-inset 0 0 12px rgba(255,255,255,0.1),
-0 0 25px rgba(0,0,0,0.4);
-
-animation:spin 4s linear infinite;
-animation-play-state:running;
+    animation:spin 4s linear infinite;
 }
 
 .vinyl-label{
-position:absolute;
-width:6vw;
-height:6vw;
-border-radius:50%;
-object-fit:cover;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    object-fit:cover;
 }
 
 @keyframes spin{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
 }
 
-/* MOBILE PORTRAIT */
-
-@media (max-width:768px) and (orientation:portrait){
-
-.main-container{
-flex-direction:column;
-justify-content:flex-start;
-gap:20px;
-padding:20px;
+#skipBtn{
+    position:absolute;
+    bottom:30px;
+    right:40px;
+    display:none;
 }
 
-.love-box{
-width:100%;
-max-height:50vh;
+/* ===== PAGE 4 ===== */
+
+#page4{
+    display:none;
+    position:absolute;
+    inset:0;
+    z-index:1;
 }
 
-.love-title{
-font-size:30px;
+.gallery{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:100%;
+    padding:40px;
 }
 
-.love-text{
-font-size:16px;
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(2,160px);
+    gap:20px;
 }
 
-.music-player{
-width:260px;
-height:200px;
+.flip-card{
+    width:160px;
+    height:160px;
+    perspective:1000px;
 }
 
-.vinyl{
-width:150px;
-height:150px;
-right:90px;
+.flip-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform .8s;
 }
 
-.cover{
-width:170px;
+.flip-card.flip .flip-inner{
+    transform:rotateY(180deg);
 }
 
-.vinyl-label{
-width:50px;
-height:50px;
+.flip-front,.flip-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:10px;
+    overflow:hidden;
 }
 
+.flip-front img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-/* MOBILE LANDSCAPE */
-
-@media (max-width:900px) and (orientation:landscape){
-
-.main-container{
-flex-direction:row;   /* ini bikin tetap kesamping */
-align-items:center;
-justify-content:space-between;
-gap:20px;
+.flip-back{
+    background:#ffb6c1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    transform:rotateY(180deg);
 }
 
-.love-box{
-width:50%;
-max-height:80vh;
-}
+/* ===== MOBILE ===== */
 
-.music-player{
-width:40vw;
-height:40vw;
-}
+@media(max-width:768px){
 
-.vinyl{
-width:22vw;
-height:22vw;
-right:12vw;
-}
+    .main-container,.gallery{
+        flex-direction:column;
+        gap:25px;
+    }
 
-.cover{
-width:20vw;
-}
+    .love-box{
+        width:100%;
+    }
 
-.vinyl-label{
-width:7vw;
-height:7vw;
-}
+    .music-player{
+        width:260px;
+    }
+
+    .cover{
+        width:170px;
+    }
+
+    .vinyl{
+        width:160px;
+        height:160px;
+        right:90px;
+    }
 
 }
 
@@ -215,44 +309,219 @@ height:7vw;
 
 <body>
 
-<div class="main-container">
+    <div class="stars" id="stars"></div>
 
-<div class="love-box">
+    <audio id="song" src="musicmel/lagu.mp3" loop></audio>
 
-<div class="emoji">❤️</div>
-
-<div class="love-title">Untuk Melda</div>
-
-<div class="love-text">
-Di antara banyaknya hari yang pernah aku jalani,  
-hari ini terasa berbeda karena ada kamu di dalamnya.  
-
-Kamu adalah alasan mengapa senyum bisa muncul  
-tanpa alasan yang jelas.  
-
-Terima kasih sudah hadir di hidupku,  
-terima kasih sudah menjadi seseorang  
-yang membuat dunia terasa lebih hangat.  
-
-Aku mungkin tidak selalu sempurna,  
-tapi satu hal yang pasti...  
-
-<strong>aku selalu bersyukur karena ada kamu.</strong> ❤️
+<!-- LOGIN -->
+<div id="login">
+    <h2>Unlock Heart</h2>
+    <input type="password" id="pass">
+    <button onclick="login()">Masuk</button>
 </div>
 
+<!-- CONFIRM -->
+<div id="confirm">
+    <h2 class="confirm-text">Siap lihat kejutan?</h2>
+    <button class="confirm-btn" onclick="start()">SIAP</button>
 </div>
 
-<div class="music-player">
+<!-- PAGE 3 -->
+<div id="page3">
 
-<div class="vinyl">
-<img src="imgmel/cover.jpeg" class="vinyl-label">
+    <button id="skipBtn" onclick="showPage4()">SKIP</button>
+
+    <div class="main-container">
+
+        <div class="love-box" id="loveBox">
+
+            <div class="love-title" id="title">Untuk Melda</div>
+
+            <div class="love-text">
+
+                <p>Di antara banyaknya hari yang pernah aku jalani, hari ini terasa berbeda karena ada kamu di dalamnya.</p>
+
+                <p>Kamu adalah alasan mengapa senyum bisa muncul tanpa alasan yang jelas.</p>
+
+                <p>Terima kasih sudah hadir di hidupku dan membuat dunia terasa lebih hangat.</p>
+
+                <p>Aku mungkin tidak selalu sempurna, tapi satu hal yang pasti...</p>
+
+                <p><b>aku selalu bersyukur karena ada kamu ❤️</b></p>
+
+            </div>
+
+        </div>
+
+        <div class="music-player" id="player">
+
+            <div class="vinyl">
+                <img src="imgmel/cover.jpeg" class="vinyl-label">
+            </div>
+
+            <img src="imgmel/cover.jpeg" class="cover">
+
+        </div>
+
+    </div>
 </div>
 
-<img src="imgmel/cover.jpeg" class="cover">
+<!-- PAGE 4 -->
+
+<div id="page4">
+
+    <div class="gallery">
+
+        <div class="photo-grid">
+
+            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="imgmel/foto1.jpeg"></div><div class="flip-back">❤️</div></div></div>
+            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="imgmel/foto2.jpeg"></div><div class="flip-back">❤️</div></div></div>
+            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="imgmel/foto3.jpeg"></div><div class="flip-back">❤️</div></div></div>
+            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="imgmel/foto4.jpeg"></div><div class="flip-back">❤️</div></div></div>
+
+        </div>
+
+        <div class="music-player">
+
+            <div class="vinyl">
+                <img src="imgmel/cover.jpeg" class="vinyl-label">
+            </div>
+
+            <img src="imgmel/cover.jpeg" class="cover">
+
+        </div>
+
+    </div>
 
 </div>
 
-</div>
+<script>
+
+/* ===== STARS ===== */
+
+    const stars=document.getElementById("stars")
+
+    for(let i=0;i<40;i++){
+        let s=document.createElement("div")
+        s.className="star"
+        s.innerHTML="✦"
+        s.style.left=Math.random()*100+"vw"
+        s.style.top=Math.random()*100+"vh"
+        s.style.animationDelay=Math.random()*3+"s"
+        stars.appendChild(s)
+    }
+
+/* ===== LOGIN ===== */
+
+    function login(){
+
+        if(document.getElementById("pass").value.toLowerCase()=="melda"){
+
+            const loginPage=document.getElementById("login")
+
+            loginPage.classList.add("fadeOut")
+
+            setTimeout(()=>{
+
+                loginPage.style.display="none"
+
+                const confirm=document.getElementById("confirm")
+
+                confirm.style.display="flex"
+                confirm.classList.add("fadeIn")
+
+            },800)
+
+        }
+
+    }
+
+/* ===== START PAGE 3 ===== */
+
+    function start(){
+
+        document.getElementById("confirm").style.display="none"
+        document.getElementById("page3").style.display="block"
+
+        document.getElementById("song").play()
+
+        animatePage3()
+
+        setTimeout(()=>{
+            showPage4()
+        },10000)
+
+        document.getElementById("skipBtn").style.display="block"
+
+    }
+
+/* ===== DRAMATIC ANIMATION ===== */
+
+    function animatePage3(){
+
+        const player=document.getElementById("player")
+        player.style.transform="translateX(200px)"
+        player.style.opacity="0"
+
+        setTimeout(()=>{
+            player.style.transition="1s"
+            player.style.transform="translateX(0)"
+            player.style.opacity="1"
+        },200)
+
+        setTimeout(()=>{
+            document.getElementById("loveBox").style.transition="1s"
+            document.getElementById("loveBox").style.opacity="1"
+        },1000)
+
+        setTimeout(()=>{
+            document.getElementById("title").style.opacity="1"
+        },1600)
+
+        const lines=document.querySelectorAll(".love-text p")
+
+        lines.forEach((p,i)=>{
+            setTimeout(()=>{
+                p.style.transition=".6s"
+                p.style.opacity="1"
+            },2200+(i*600))
+        })
+
+    }
+
+/* ===== PAGE 4 ===== */
+
+    function showPage4(){
+
+        document.getElementById("page3").style.display="none"
+        document.getElementById("page4").style.display="block"
+
+        startFlip()
+
+    }
+
+/* ===== FLIP SLIDESHOW ===== */
+
+    function startFlip(){
+
+        const cards=document.querySelectorAll(".flip-card")
+        let i=0
+
+        setInterval(()=>{
+
+            cards.forEach(c=>c.classList.remove("flip"))
+
+            cards[i].classList.add("flip")
+
+            i++
+
+            if(i>=cards.length)i=0
+
+        },2000)
+
+    }
+
+</script>
 
 </body>
 </html>
