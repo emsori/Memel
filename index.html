@@ -1,238 +1,229 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>HBD Melda ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Melda ❤️</title>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-	<style>
+    <style>
 
-		body,html{
-			margin:0;
-			padding:0;
-			width:100%;
-			height:100%;
-			overflow:hidden;
-			background:#000;
-		}
+        body,html{
+            margin:0;
+            padding:0;
+            width:100%;
+            height:100%;
+            font-family:'Poppins',sans-serif;
+        }
 
-/* MATRIX */
-
-#matrixCanvas{
-	position:absolute;
-	z-index:1;
+/* LOGIN */
+#login-stage,#confirm-stage{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:100;
+    color:white;
 }
 
-/* STARFIELD */
-
-#starfield{
-	position:absolute;
-	width:100%;
-	height:100%;
-	z-index:0;
-	opacity:0;
-	transition:opacity 2s;
+#confirm-stage{
+    display:none;
 }
 
-.star{
-	position:absolute;
-	background:white;
-	border-radius:50%;
-	animation:twinkle var(--d) infinite;
+.card{
+    text-align:center;
+    width:260px;
 }
 
-@keyframes twinkle{
-	0%,100%{opacity:0.3}
-	50%{opacity:1}
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:8px;
+    border:none;
+    text-align:center;
 }
 
-/* HEADER */
-
-#elegant-header{
-	position:absolute;
-	top:8%;
-	left:50%;
-	transform:translateX(-50%);
-	z-index:50;
-	opacity:0;
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#ff2d55;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.header-box{
-	display:inline-block;
-	background:rgba(255,255,255,0.1);
-	backdrop-filter:blur(10px);
-	padding:12px 30px;
-	border-radius:15px;
-	border:1px solid rgba(255,255,255,0.2);
+/* MAIN */
+#main-stage{
+    display:none;
+    position:absolute;
+    inset:0;
+    background:white;
 }
 
-#header-text{
-	font-family:'Playfair Display',serif;
-	font-style:italic;
-	color:#fff;
-	font-size:1.6rem;
-	margin:0;
-	text-align:center;
+/* LAYOUT */
+.main-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:100%;
+    padding:40px;
+    box-sizing:border-box;
 }
 
-/* INTRO */
-
-#intro-layer{
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	justify-content:center;
-	z-index:100;
+/* BOX ROMANTIS */
+.love-box{
+    width:45%;
+    background:#ffb6c1;
+    padding:40px;
+    border-radius:20px;
+    position:relative;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-#countdown{
-	font-size:8rem;
-	color:#ff2d55;
-	font-family:'Arial Black';
-	text-shadow:0 0 20px #ff2d55;
+.emoji{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:28px;
 }
 
-#message{
-	font-size:3.5rem;
-	display:none;
-	color:#ff2d55;
-	font-family:'Arial Black';
-	text-align:center;
+.love-title{
+    font-family:'Great Vibes',cursive;
+    font-size:48px;
+    color:#d10050;
+    margin-bottom:20px;
 }
 
-/* BOOK */
-
-#book-container{
-	display:none;
-	position:absolute;
-	top:55%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	width:500px;
-	height:350px;
-	perspective:2000px;
-	z-index:40;
+.love-text{
+    font-size:18px;
+    line-height:1.7;
+    color:#5a0030;
 }
 
-.book{
-	position:relative;
-	width:500px;
-	height:100%;
-	transform-style:preserve-3d;
+/* PLAYER */
+.music-player{
+    position:relative;
+    width:420px;
+    height:260px;
 }
 
-/* PAGE */
-
-.page{
-	position:absolute;
-	width:250px;
-	height:100%;
-	top:0;
-	left:50%;
-	transform-origin:left;
-	transform-style:preserve-3d;
-	transition:transform 1.2s cubic-bezier(.645,.045,.355,1);
-	cursor:pointer;
-	box-shadow:0 10px 25px rgba(0,0,0,0.5);
+/* COVER BESAR */
+.cover{
+    position:absolute;
+    width:260px;
+    right:0;
+    z-index:3;
+    border-radius:6px;
+    box-shadow:0 12px 35px rgba(0,0,0,0.4);
 }
 
-.front,.back{
-	position:absolute;
-	width:100%;
-	height:100%;
-	backface-visibility:hidden;
-	border:4px solid #fff;
-	box-sizing:border-box;
-	background-size:cover;
-	background-position:center;
+/* VINYL */
+.vinyl{
+    position:absolute;
+    width:240px;
+    height:240px;
+    right:160px;
+    top:5px;
+    border-radius:50%;
+    z-index:1;
+
+    background:
+    radial-gradient(circle at center,
+        #000 60px,
+        #111 70px,
+        #000 100px,
+        #111 120px,
+        #000 150px);
+
+    box-shadow:
+    inset 0 0 12px rgba(255,255,255,0.1),
+    0 0 25px rgba(0,0,0,0.4);
+
+    animation:spin 4s linear infinite;
+    animation-play-state:paused;
 }
 
-.front{
-	border-radius:0 10px 10px 0;
+/* COVER DI TENGAH VINYL */
+.vinyl-label{
+    position:absolute;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 8px rgba(0,0,0,0.4);
 }
 
-.back{
-	transform:rotateY(180deg);
-	border-radius:10px 0 0 10px;
-	background:#fff;
+/* ROTATE */
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
 }
 
-.page.flipped{
-	transform:rotateY(-180deg);
-}
-
-/* COVER */
-
-.cover-front{
-	background:#fff;
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	justify-content:center;
-}
-
-.hands-container{
-	position:relative;
-	width:100%;
-	height:180px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-}
-
-.hand-img{
-	width:42%;
-}
-
-.hand-right{
-	transform:scaleX(-1);
-}
-
-.cover-heart{
-	position:absolute;
-	top:40%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	font-size:45px;
-}
-
-.cover-front p{
-	font-family:sans-serif;
-	font-size:11px;
-	font-weight:bold;
-	color:#333;
-	margin-top:20px;
-}
-
-/* GIF */
-
-#cat-gif{
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%) scale(0);
-	width:150px;
-	z-index:60;
-	opacity:0;
+/* TEXT */
+#dramatic-text{
+    position:absolute;
+    bottom:40px;
+    width:100%;
+    text-align:center;
+    font-size:28px;
+    letter-spacing:2px;
+    opacity:0;
+    color:#ff2d55;
 }
 
 /* HEART */
+.heart{
+    position:absolute;
+    bottom:-50px;
+    font-size:22px;
+    color:#ff2d55;
+}
 
-.heart-fly{
-	position:absolute;
-	bottom:-50px;
-	color:#ff2d55;
-	font-size:20px;
-	pointer-events:none;
+/* RESPONSIVE */
+@media (max-width:768px){
+
+    .main-container{
+        flex-direction:column;
+        gap:40px;
+        padding:20px;
+    }
+
+    .love-box{
+        width:90%;
+    }
+
+    .music-player{
+        width:300px;
+        height:200px;
+    }
+
+    .vinyl{
+        width:180px;
+        height:180px;
+        right:120px;
+    }
+
+    .cover{
+        width:200px;
+    }
+
+    .vinyl-label{
+        width:60px;
+        height:60px;
+    }
+
 }
 
 </style>
@@ -240,328 +231,152 @@
 
 <body>
 
-	<div id="starfield"></div>
-	<canvas id="matrixCanvas"></canvas>
+    <audio id="song" src="musicmel/lagu.mp3" loop></audio>
 
-	<div id="elegant-header">
-		<div class="header-box">
-			<h1 id="header-text">Happy Birthday Melda ❤️</h1>
-		</div>
-	</div>
+<!-- LOGIN -->
+<div id="login-stage">
+    <div class="card">
+        <h2>Unlock Heart</h2>
+        <input type="password" id="passInput" placeholder="Password">
+        <button onclick="checkPass()">Buka</button>
+    </div>
+</div>
 
-	<div id="intro-layer">
-		<div id="countdown">3</div>
-		<div id="message"></div>
-	</div>
+<!-- CONFIRM -->
+<div id="confirm-stage">
+    <div class="card">
+        <p>Sudah siap melihat kejutan?</p>
+        <button onclick="start()">SIAP!</button>
+    </div>
+</div>
 
-	<img id="cat-gif" src="https://media.tenor.com/DhqhjsSjIsEAAAAi/sanrio.gif">
+<!-- MAIN -->
+<div id="main-stage">
 
-	<div id="book-container">
-		<div class="book">
+    <div class="main-container">
 
-<!-- COVER DEPAN -->
+<!-- BOX ROMANTIS -->
+<div class="love-box">
 
-<div class="page" data-text="Buka Bukunya Sayang ❤️" style="z-index:10">
+    <div class="emoji">❤️</div>
 
-	<div class="front cover-front">
+    <div class="love-title">Untuk Melda</div>
 
-		<div class="hands-container">
-			<img src="imgmel/tangan.jpeg" class="hand-img">
-			<div class="cover-heart">❤️</div>
-			<img src="imgmel/tangan.jpeg" class="hand-img hand-right">
-		</div>
+    <div class="love-text">
+        Di antara banyaknya hari yang pernah aku jalani,  
+        hari ini terasa berbeda karena ada kamu di dalamnya.  
 
-		<p>TAP UNTUK BUKA ❤️</p>
+        Kamu adalah alasan mengapa senyum bisa muncul  
+        tanpa alasan yang jelas.  
 
-	</div>
+        Terima kasih sudah hadir di hidupku,  
+        terima kasih sudah menjadi seseorang  
+        yang membuat dunia terasa lebih hangat.  
 
-	<div class="back" style="background-image:url('imgmel/foto1.jpeg')"></div>
+        Aku mungkin tidak selalu sempurna,  
+        tapi satu hal yang pasti...  
+
+        <strong>aku selalu bersyukur karena ada kamu.</strong> ❤️
+    </div>
 
 </div>
 
+<!-- PLAYER -->
+<div class="music-player">
 
-<!-- PAGE 2 -->
+    <div class="vinyl" id="vinyl">
 
-<div class="page" data-text="Selamanya Bareng Ya Melda ✨" style="z-index:5">
+        <img src="imgmel/cover.jpeg" class="vinyl-label">
 
-	<div class="front" style="background-image:url('imgmel/foto5.jpeg')"></div>
-	<div class="back" style="background-image:url('imgmel/foto6.jpeg')"></div>
+    </div>
 
-</div>
-
-
-<!-- PAGE 3 -->
-
-<div class="page" data-text="You're My Everything ❤️" style="z-index:4">
-
-	<div class="front" style="background-image:url('imgmel/foto3.jpeg')"></div>
-	<div class="back" style="background-image:url('imgmel/foto4.jpeg')"></div>
-
-</div>
-
-
-<!-- COVER BELAKANG -->
-
-<div class="page" data-text="Love You Always ❤️" style="z-index:1">
-
-	<div class="front cover-front">
-
-		<div class="hands-container">
-			<img src="imgmel/tangan.jpeg" class="hand-img">
-			<div class="cover-heart">❤️</div>
-			<img src="imgmel/tangan.jpeg" class="hand-img hand-right">
-		</div>
-
-		<p>THE END ❤️</p>
-
-	</div>
-
-	<div class="back" style="background:#000"></div>
+    <img src="imgmel/cover.jpeg" class="cover">
 
 </div>
 
 </div>
-</div>
 
+<div id="dramatic-text">HBD MELDA ❤️</div>
+
+</div>
 
 <script>
 
-/* MATRIX */
+    const song=document.getElementById("song")
+    const vinyl=document.getElementById("vinyl")
 
-	const canvas=document.getElementById('matrixCanvas');
-	const ctx=canvas.getContext('2d');
+    function checkPass(){
 
-	canvas.width=window.innerWidth;
-	canvas.height=window.innerHeight;
+        if(document.getElementById("passInput").value.toLowerCase()=="melda"){
 
-	const fontSize=10;
-	const columns=Math.floor(canvas.width/fontSize);
-	const rainDrops=Array.from({length:columns}).fill(-1);
+            gsap.to("#login-stage",{opacity:0,duration:0.6,onComplete:()=>{
 
-	function drawMatrix(){
+                document.getElementById("login-stage").style.display="none"
+                document.getElementById("confirm-stage").style.display="flex"
 
-		ctx.fillStyle='rgba(0,0,0,0.15)';
-		ctx.fillRect(0,0,canvas.width,canvas.height);
+            }})
 
-		ctx.fillStyle='#ff2d55';
-		ctx.font=fontSize+'px monospace';
+        }
 
-		for(let i=0;i<rainDrops.length;i++){
+    }
 
-			if(rainDrops[i]>=0){
-				ctx.fillText(Math.floor(Math.random()*2),i*fontSize,rainDrops[i]*fontSize);
-			}
+    function start(){
 
-			if(rainDrops[i]*fontSize>canvas.height && Math.random()>0.8){
-				rainDrops[i]=0;
-			}
+        gsap.to("#confirm-stage",{opacity:0,duration:0.8,onComplete:()=>{
 
-			else if(rainDrops[i]==-1 && Math.random()>0.95){
-				rainDrops[i]=0;
-			}
+            document.getElementById("confirm-stage").remove()
 
-			if(rainDrops[i]!=-1){
-				rainDrops[i]++;
-			}
+            showPlayer()
 
-		}
+        }})
 
-	}
+    }
 
-	let matrixInterval=setInterval(drawMatrix,30);
+    function showPlayer(){
 
+        document.getElementById("main-stage").style.display="block"
 
-/* COUNTDOWN */
+        gsap.from(".love-box",{x:-100,opacity:0,duration:1.5})
 
-	let timeLeft=3;
+        gsap.from(".cover",{x:200,opacity:0,duration:1.5})
 
-	const timer=setInterval(()=>{
+        gsap.from(".vinyl",{x:200,opacity:0,duration:1.5,delay:0.4,onComplete:()=>{
 
-		timeLeft--;
+            song.play()
 
-		if(timeLeft>0){
+            vinyl.style.animationPlayState="running"
 
-			document.getElementById("countdown").innerHTML=timeLeft;
+            gsap.to("#dramatic-text",{opacity:1,duration:2})
 
-		}else{
+            startHearts()
 
-			clearInterval(timer);
+        }})
 
-			document.getElementById("countdown").innerHTML="❤️";
+    }
 
-			gsap.to("#countdown",{scale:15,opacity:0,duration:1,onComplete:startCelebration});
+    function startHearts(){
 
-		}
+        setInterval(()=>{
 
-	},1200);
+            let h=document.createElement("div")
 
+            h.className="heart"
+            h.innerHTML="❤️"
 
+            h.style.left=Math.random()*100+"vw"
 
-	function startCelebration(){
+            document.body.appendChild(h)
 
-		const msg=document.getElementById("message");
+            gsap.to(h,{
+                y:-window.innerHeight-100,
+                opacity:0,
+                duration:4,
+                onComplete:()=>h.remove()
+            })
 
-		msg.style.display="block";
+        },700)
 
-		const texts=["HAPPY","BIRTHDAY","TO","MY LOVELY","MELDA"];
-
-		let i=0;
-
-		const t=setInterval(()=>{
-
-			gsap.fromTo(msg,{opacity:0,y:10},{opacity:1,y:0,duration:0.8});
-
-			msg.innerHTML=texts[i];
-
-			i++;
-
-			if(i>=texts.length){
-
-				clearInterval(t);
-
-				setTimeout(showGifStage,1500);
-
-			}
-
-		},1800);
-
-	}
-
-
-
-	function showGifStage(){
-
-		canvas.style.opacity="0";
-		clearInterval(matrixInterval);
-
-		document.getElementById("intro-layer").remove();
-
-		document.getElementById("starfield").style.opacity="1";
-
-		gsap.to("#cat-gif",{opacity:1,scale:1,duration:1,onComplete:()=>{
-
-			setTimeout(()=>{
-
-				gsap.to("#cat-gif",{opacity:0,scale:0.5,duration:0.8,onComplete:showBook})
-
-			},2000)
-
-		}})
-
-	}
-
-
-
-	function showBook(){
-
-		document.getElementById("cat-gif").style.display="none";
-
-		document.getElementById("elegant-header").style.opacity="1";
-
-		const container=document.getElementById("book-container");
-
-		container.style.display="block";
-
-		const pages=document.querySelectorAll('.page');
-
-		const hText=document.getElementById("header-text");
-
-		pages.forEach((page,index)=>{
-
-			page.onclick=function(e){
-
-				e.stopPropagation();
-
-				const isFlipped=this.classList.toggle('flipped');
-
-				hText.style.opacity="0";
-
-				setTimeout(()=>{
-
-					let topPage=[...pages].reverse().find(p=>!p.classList.contains('flipped'));
-
-					if(topPage){
-
-						hText.innerText=topPage.getAttribute('data-text');
-
-						hText.style.opacity="1";
-
-					}
-
-				},600);
-
-
-/* FIX ZINDEX */
-
-				if(isFlipped){
-
-					setTimeout(()=>{
-
-						this.style.zIndex=index;
-
-					},600);
-
-				}else{
-
-					setTimeout(()=>{
-
-						this.style.zIndex=pages.length-index;
-
-					},600);
-
-				}
-
-			};
-
-		});
-
-		setInterval(createHeart,600);
-
-	}
-
-
-
-	function createHeart(){
-
-		const heart=document.createElement('div');
-
-		heart.className='heart-fly';
-
-		heart.innerHTML='❤️';
-
-		heart.style.left=Math.random()*100+'vw';
-
-		document.body.appendChild(heart);
-
-		gsap.to(heart,{y:-window.innerHeight-100,opacity:0,duration:4,onComplete:()=>heart.remove()});
-
-	}
-
-
-
-/* STARFIELD */
-
-	const starfield=document.getElementById('starfield');
-
-	for(let i=0;i<150;i++){
-
-		const star=document.createElement('div');
-
-		star.className='star';
-
-		star.style.left=Math.random()*100+'%';
-
-		star.style.top=Math.random()*100+'%';
-
-		star.style.width=Math.random()*2+'px';
-
-		star.style.height=star.style.width;
-
-		star.style.setProperty('--d',(2+Math.random()*3)+'s');
-
-		starfield.appendChild(star);
-
-	}
+    }
 
 </script>
 
